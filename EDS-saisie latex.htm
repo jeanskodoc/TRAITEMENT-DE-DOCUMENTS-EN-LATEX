@@ -403,7 +403,7 @@
         .chat-bubble {
             position: fixed;
             bottom: 20px;
-            right: 20px;
+            left: 20px;
             width: 60px;
             height: 60px;
             background: var(--secondary);
@@ -453,6 +453,12 @@
             }
         }
         
+        /* Style pour positionner le bouton Tawk.to à gauche */
+        #tawk-button-container {
+            left: 20px !important;
+            right: auto !important;
+        }
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -478,6 +484,15 @@
             
             .payment-bubble {
                 bottom: 90px;
+            }
+            
+            /* Ajustement pour mobile */
+            #tawk-button-container {
+                left: 10px !important;
+            }
+            
+            .chat-bubble {
+                left: 10px;
             }
         }
     </style>
@@ -692,7 +707,7 @@
         </div>
     </footer>
 
-    <!-- Bulle de chat stylisée -->
+    <!-- Bulle de chat stylisée - Déplacée à gauche -->
     <div class="chat-bubble" onclick="Tawk_API.maximize()">
         <i class="fas fa-comments"></i>
     </div>
