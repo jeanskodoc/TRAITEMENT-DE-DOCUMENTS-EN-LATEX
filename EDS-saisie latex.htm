@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDS - Services LaTeX Professionnels</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --payment: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .hero {
+            background: url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #2980b9;
+        }
+        
+        .btn-payment {
+            background: var(--payment);
+        }
+        
+        .btn-payment:hover {
+            background: #8e44ad;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 3rem 0;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 0.5rem auto;
+        }
+        
+        .services {
+            padding: 3rem 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            background: var(--secondary);
+            color: white;
+            font-size: 2rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .process {
+            background: var(--light);
+            padding: 3rem 0;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .step {
+            text-align: center;
+            width: 250px;
+            margin: 1rem;
+        }
+        
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .testimonials {
+            padding: 3rem 0;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .pricing {
+            background: var(--light);
+            padding: 3rem 0;
+        }
+        
+        .pricing-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+        }
+        
+        .price {
+            font-size: 2rem;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        .price-features {
+            list-style: none;
+            margin: 1rem 0;
+            text-align: left;
+        }
+        
+        .price-features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .price-features li:before {
+            content: "✓";
+            color: var(--success);
+            position: absolute;
+            left: 0;
+        }
+        
+        .contact {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+        }
+        
+        .external-contact {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .payment-section {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .chat-bubble {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+        
+        .payment-bubble {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--payment);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .payment-bubble {
+                bottom: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap logo-icon"></i>
+                    <h1>EDS: École Digne du Siècle</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pricing">Tarifs</a></li>
+                        <li><a href="#process">Processus</a></li>
+                        <li><a href="#testimonials">Témoignages</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Services Professionnels de Saisie et Mise en Forme LaTeX</h2>
+            <p>Confiez-nous la rédaction et la mise en forme de vos documents académiques et professionnels avec la précision de LaTeX</p>
+            <a href="#contact" class="btn">Demander un devis</a>
+            <a href="#pricing" class="btn btn-payment" style="margin-left: 10px;">Voir nos tarifs</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Saisie de Documents</h3>
+                        <p>Conversion de vos documents manuscrits ou numérisés en fichiers LaTeX parfaitement formatés. Idéal pour les notes de cours, articles et documents techniques.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Préparation d'Épreuves</h3>
+                        <p>Création d'examens, contrôles et exercices avec une mise en page professionnelle. Nous incluons formules mathématiques, schémas et tableaux complexes.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Suivi de Mémoires et Thèses</h3>
+                        <p>Accompagnement complet pour la rédaction et la mise en forme de vos travaux de recherche, avec respect strict des normes académiques.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Traitement de Texte LaTeX</h3>
+                        <p>Services sur mesure pour tous types de documents : livres, présentations, rapports, CV académiques, posters scientifiques et bien plus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Nos Tarifs</h2>
+            <div class="pricing-options">
+                <div class="pricing-card">
+                    <h3>Saisie Standard</h3>
+                    <div class="price">0.456€/page</div>
+                    <ul class="price-features">
+                        <li>Saisie de documents simples</li>
+                        <li>Formules mathématiques basiques</li>
+                        <li>Mise en page standard</li>
+                        <li>Livraison sous 1 jours</li>
+                    </ul>
+                    <a href="https://me.fedapay.com/Rn8LZlsz" class="btn btn-payment" target="_blank">Payer maintenant</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Saisie Avancée</h3>
+                    <div class="price">0.76€/page</div>
+                    <ul class="price-features">
+                        <li>Saisie de documents complexes</li>
+                        <li>Formules mathématiques avancées</li>
+                        <li>Schémas et tableaux</li>
+                        <li>Livraison sous 2 jours</li>
+                    </ul>
+                    <a href="https://me.fedapay.com/Rn8LZlsz" class="btn btn-payment" target="_blank">Payer maintenant</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Projet sur mesure</h3>
+                    <div class="price">Sur devis</div>
+                    <ul class="price-features">
+                        <li>Mémoires et thèses</li>
+                        <li>Livres et publications</li>
+                        <li>Accompagnement personnalisé</li>
+                        <li>Délai adapté à vos besoins</li>
+                    </ul>
+                    <a href="#contact" class="btn">Demander un devis</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process">
+        <div class="container">
+            <h2 class="section-title">Notre Processus</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Consultation</h3>
+                    <p>Nous discutons de vos besoins et exigences spécifiques</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Devis</h3>
+                    <p>Nous établissons un devis détaillé sans engagement</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Réalisation</h3>
+                    <p>Nos experts LaTeX travaillent sur votre projet</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Livraison</h3>
+                    <p>Vous recevez vos documents parfaitement formatés</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Témoignages</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"EDS a transformé mon manuscrit désorganisé en une thèse impeccable. Le service était rapide et professionnel."</p>
+                    <p class="testimonial-author">— Dr. Martin Leroy, Maître de Conférences</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"J'ai commandé la saisie de mes notes de cours. Le résultat en LaTeX était parfait, avec toutes les formules mathématiques correctement formatées."</p>
+                    <p class="testimonial-author">— Prof. Sophie DOUKWA</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"Le suivi de mémoire offert par EDS m'a sauvé la vie pendant ma dernière année de master. Je recommande vivement leurs services!"</p>
+                    <p class="testimonial-author">— Thomas KOLA, Étudiant en Master</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Contactez-nous</h2>
+            <div class="contact-form">
+                   
+                <div class="external-contact">
+                    <p style="color: var(--dark); margin: 1rem 0;">contactez-nous directement via notre formulaire externe</p>
+                    <a href="https://xnzfa0rw.forms.app/untitled-form-1" class="btn btn-secondary" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Formulaire de contact
+                    </a>
+                </div>
+            </div>
+            
+            <div class="payment-section">
+                <h3>Paiement Sécurisé</h3>
+                <p>Effectuez votre paiement en toute sécurité via notre plateforme de paiement</p>
+                <a href="https://me.fedapay.com/Rn8LZlsz" class="btn btn-payment" target="_blank">
+                    <i class="fas fa-credit-card"></i> Payer maintenant
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap logo-icon"></i>
+                    <h1>EDS: École Digne du Siècle</h1>
+                </div>
+                <p>Services professionnels de traitement de texte en LaTeX</p>
+                
+                <p>&copy; 2025 EDS. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bulle de chat stylisée -->
+    <div class="chat-bubble" onclick="Tawk_API.maximize()">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Bulle de paiement -->
+    <div class="payment-bubble" onclick="window.open('https://me.fedapay.com/Rn8LZlsz', '_blank')">
+        <i class="fas fa-credit-card"></i>
+    </div>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68b88883721af15d8752e7d4/1j48dahct';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <script>
+        document.getElementById('serviceRequestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre demande! Nous vous contacterons très rapidement.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
